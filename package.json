@@ -10,10 +10,10 @@
   "author": "Morgan Kruger",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^26.2.4",
     "video.js": "^8.5.2"
   },
   "dependencies": {
+    "electron": "^26.2.4",
     "axios": "^1.5.1",
     "dotenv": "^16.3.1",
     "electron-reload": "^2.0.0-alpha.1",
