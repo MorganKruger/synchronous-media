@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  background-color: darkslategray;
+  color: whitesmoke;
+  width: 100%;
+  height: 100%;
+}
+
+#searchResults {
+  list-style: none;
+}
+
+.searchResult {
+  border: none;
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 4px rgb(190, 175, 160);
+  padding: .25rem;
+  margin-bottom: .25rem;
+  border-radius: .25rem;
+}
+.searchResult:hover {
+  background-color: rgb(212, 211, 211);
+}
+
+
+input[type=text] {
+  width: 80%;
+  margin: auto .25rem;
+}
+
+
+#subWrapperPlayer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#voteSkip {
+  position: absolute;
+  display: none;
+}

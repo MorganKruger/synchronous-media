@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bababooey</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./client/styles/style.css">
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+</head>
+<body>
+
+  <div id="wrapper">
+    <div id="subWrapperSearch">
+      <p id="queueLength"></p>
+    
+      <input type="text" placeholder="playlist keyword search" id="keywordSearch" title="Playlist Keyword Search">
+      <input type="text" placeholder="playlist id search" id="idSearch" title="Playlist ID Search" value="PLL2HWLA83pPV5nGHwEgTh5-zX9E9M_hDy">
+      
+      <ul id="searchResults"></ul>
+    </div>
+    
+    <div id="subWrapperPlayer">
+      <div id="player"></div>
+      <button id="voteSkip"><i class="fa-solid fa-forward">vote skip</i></button>
+    </div>
+      
+    <script src="./client/src/renderer.js"></script>
+  </div>
+</body>
+</html>
