@@ -106,7 +106,7 @@ function onYouTubeIframeAPIReady() {
 function mammaMia(e) {
   if (e.data == 101 || e.data == 150) { // Publisher disallowed embeds
     console.log("buh, no embeds fo you")
-    ipc("hide");
+    ipcSend("hide");
     videoQueue.shift();
     playNextInQueueWithDelay();
   }
@@ -122,7 +122,7 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.ENDED) {
     console.log("VIDEO ENDED")
-    ipc("hide");
+    ipcSend("hide");
     playNextInQueueWithDelay();
   } else {
 
@@ -136,16 +136,30 @@ function playNextInQueueWithDelay() {
   if (!videoQueue.length) return;
     
   setTimeout(function () {
-    
+
+    // UPDATE THE TITLE WITH THE CURRENT VIDEO'S TITLE
+    // axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoQueue[0]}&part=status&key=${API_KEY}`) 
+    // .then(response => {
+    //   console.log(response.data.items[0])
+    //   console.log(response.data.items[0].snippet.title)
+    //   ipcSend("title", "zaza");
+    //   // ipcSend("title", response.data.items[0].snippet.title);
+
+    // }).catch(error => {
+    //   console.error(error);
+    //   ipcSend("title", "");
+    // });
+
+    console.log("checked for title")
+
     // Proactive status check. 
-    while (!axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoQueue[0]}&part=status&key=${API_KEY}`).uploadStatus == "processed") 
-      console.log(videoQueue.shift());
+    // while (thing.uploadStatus != "processed") // currently infinite loop, try "if" instead?
+    //   console.log(videoQueue.shift());
 
-    updateQueueNumber();    
-
-    // Don't need to call stopVideo() first. Regular queueing functions work.
+    updateQueueNumber();    ;
+  
     player.loadVideoById(videoQueue.shift());
-    ipc("show");
+    ipcSend("show");
   }, Math.floor((Math.random() * INTERMISSION) + INTERMISSION / 2));
   
 }
@@ -153,5 +167,5 @@ function playNextInQueueWithDelay() {
 //////////////////
 // UTILITY BELT //
 //////////////////
-const ipc = message => ipcRenderer.send(message);
+const ipcSend = (message, value) => ipcRenderer.send(message, value);
 const updateQueueNumber = () => $("#queueLength").text(videoQueue.length + " videos queued");

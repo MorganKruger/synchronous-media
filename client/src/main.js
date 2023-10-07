@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+// console.log(app)
 
 const path = require('path');
+// console.log(path)
 
 let win;
 const createWindow = () => {
@@ -50,4 +52,8 @@ ipcMain.on('hide', () => {
 ipcMain.on('show', () => {
   win.setAlwaysOnTop(true);
   win.show();
+});
+
+ipcMain.on('title', (e, ttl) => {
+  win.setTitle(ttl);
 });
